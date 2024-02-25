@@ -43,11 +43,7 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/EmploiDeTemps"}
-<<<<<<< HEAD
         className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
-=======
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
->>>>>>> origin/main
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -75,11 +71,7 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/ListeDesGroupes"}
-<<<<<<< HEAD
         className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
-=======
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
->>>>>>> origin/main
       >
         <svg
           className="h-[1.45rem] w-[1.5rem]"
@@ -108,11 +100,7 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/SupportDuCours"}
-<<<<<<< HEAD
         className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
-=======
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
->>>>>>> origin/main
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -141,11 +129,7 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/NoteEtAbsence"}
-<<<<<<< HEAD
         className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
-=======
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
->>>>>>> origin/main
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -171,8 +155,4 @@ export const SideNavbar = () => {
       </Link>
     </div>
   );
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> origin/main
