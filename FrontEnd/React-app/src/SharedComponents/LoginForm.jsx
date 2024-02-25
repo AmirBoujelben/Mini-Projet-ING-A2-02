@@ -1,7 +1,12 @@
 import Logo from "../assets/Logo.jpg"
+import {Link} from "react-router-dom"
+ 
+function LoginFormValidation(){
+  
+}
 
 export default function LoginForm(){
-
+  
   return(
     <div className="bg-white rounded-md w-max p-8 flex flex-col justify-center items-center h-max ">
         <img src={Logo} alt="" className="w-36"/>
@@ -22,7 +27,7 @@ export default function LoginForm(){
             </div>
             <a href="" className="ml-5 underline hover:text-cyan-700">Mot de Passe oublié?</a>
         </div>
-        <button className="mt-8 border w-full h-10 rounded-lg bg-cyan-900 text-white">Connexion</button>
+        <button  className="mt-8 border w-full h-10 rounded-lg bg-cyan-900 text-white"><Link to="/">Connexion</Link></button>
         <p className="mt-8 mb-10">Nouveau Utilisateur?<a href="" className="underline hover:text-cyan-700">Inscrivez-Vous!</a></p>
     </div>
   )
