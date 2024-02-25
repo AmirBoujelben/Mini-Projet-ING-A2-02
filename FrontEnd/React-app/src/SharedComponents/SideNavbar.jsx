@@ -3,15 +3,21 @@ import issatLogo from "../assets/issatso_logo.jpg";
 
 export const SideNavbar = () => {
   return (
-    <div className="h-[100vh] w-[22vw] p-[2rem] text-[#365B78]">
-      <img className="h-[5rem] mb-[5rem]" src={issatLogo} alt="Issat Logo" />
+    <div className="h-[100vh] w-[22vw] text-[#365B78]">
+      <Link to={"/Accueil"}>
+        <img
+          className="mt-[2rem] mx-[1.5rem] h-[4rem] mb-[5rem] cursor-pointer"
+          src={issatLogo}
+          alt="Issat Logo"
+        />
+      </Link>
 
       <Link
         to={"/Accueil"}
-        className="flex flex-row justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
-          className="icon glyph h-[1.75rem] w-[1.75rem]"
+          className="icon glyph h-[1.5rem] w-[1.5rem]"
           fill="#365B78"
           width="64px"
           height="64px"
@@ -37,10 +43,10 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/EmploiDeTemps"}
-        className="flex flex-row justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
-          className="h-[1.75rem] w-[1.75rem]"
+          className="h-[1.5rem] w-[1.5rem]"
           fill="#365B78"
           width="64px"
           height="64px"
@@ -65,10 +71,10 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/ListeDesGroupes"}
-        className="flex flex-row justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
-          className="h-[1.625rem] w-[1.75rem]"
+          className="h-[1.45rem] w-[1.5rem]"
           fill="#365B78"
           width="64px"
           height="64px"
@@ -94,10 +100,10 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/SupportDuCours"}
-        className="flex flex-row justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
-          className="h-[1.75rem] w-[1.75rem]"
+          className="h-[1.5rem] w-[1.5rem]"
           fill="#365B78"
           width="64px"
           height="64px"
@@ -123,10 +129,10 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/NoteEtAbsence"}
-        className="flex flex-row justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
-          className="h-[1.75rem] w-[1.75rem]"
+          className="h-[1.5rem] w-[1.5rem]"
           fill="#365B78"
           width="64px"
           height="64px"
