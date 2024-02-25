@@ -1,7 +1,10 @@
-
+import { SideNavbar } from "../SharedComponents/SideNavbar"
 
 export const Accueil = () => {
   return (
-    <div>Accueil</div>
+    <div>
+      <SideNavbar/>
+      Accueil
+    </div>
   )
 }
