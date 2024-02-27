@@ -27,7 +27,11 @@ export default function LoginForm(){
             </div>
             <a href="" className="ml-5 underline hover:text-cyan-700">Mot de Passe oublié?</a>
         </div>
-        <button  className="mt-8 border w-full h-10 rounded-lg bg-cyan-900 text-white"><Link to="/">Connexion</Link></button>
+        <Link
+          to="/"
+          className="flex flex-row justify-center items-center mt-8 border w-full h-10 rounded-lg bg-cyan-900 text-white">
+          <button>Connexion</button>
+        </Link>
         <p className="mt-8 mb-10">Nouveau Utilisateur?<a href="" className="underline hover:text-cyan-700">Inscrivez-Vous!</a></p>
     </div>
   )

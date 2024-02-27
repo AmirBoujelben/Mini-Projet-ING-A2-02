@@ -4,14 +4,13 @@ import LoginPage from "./SharedPages/LoginPage";
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
+  const user=false;
   return (
-    <div>
       
       <Routes>
-        <Route path="/" exact element={ <Accueil />} />
-        <Route path="/Login" element={ <LoginPage />} />
+        <Route path="/" element={user?<Accueil/> : <LoginPage/>}/>
+        <Route path="/Login" element={<LoginPage/>}/>
       </Routes>
-    </div>
   )
 }
 
