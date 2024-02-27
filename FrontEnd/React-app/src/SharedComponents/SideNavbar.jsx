@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import issatLogo from "../assets/Logo.jpg";
+import issatLogo from "../assets/issatso_logo.jpg";
 
 export const SideNavbar = () => {
   return (
@@ -43,7 +43,7 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/EmploiDeTemps"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -71,7 +71,7 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/ListeDesGroupes"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
           className="h-[1.45rem] w-[1.5rem]"
@@ -100,7 +100,7 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/SupportDuCours"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -129,7 +129,7 @@ export const SideNavbar = () => {
       </Link>
       <Link
         to={"/NoteEtAbsence"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
