@@ -75,10 +75,10 @@ function App() {
           <Route index element={<Accueil />} />
           <Route path="Profile" element={<Profile />} />
           <Route path="EmploiDeTemps" element={<Emploi />} />
-          <Route path="ListeDesGroupes" element={<EtudGroup />} />
+          <Route path="ListeDeGroupe" element={<EtudGroup />} />
           <Route path="SupportDeCours" element={<EtudCours />} />
-          <Route path="GestionDesNotes" element={<EtudNote />} />
-          <Route path="GestionDeRattrapage" element={<EtudRattrapage />} />
+          <Route path="Notes" element={<EtudNote />} />
+          <Route path="Rattrapage" element={<EtudRattrapage />} />
           <Route path="Evenement" element={<Event />} />
         </Route>
 
