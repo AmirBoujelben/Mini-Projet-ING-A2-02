@@ -1,5 +1,5 @@
 
-export const EtudNotes = () => {
+export const EtudNote = () => {
   return (
     <div>EtusNotes</div>
   )
