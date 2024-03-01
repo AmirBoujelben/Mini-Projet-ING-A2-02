@@ -1,6 +1,7 @@
+import { createContext } from "react";
 //Context fih User Data 
-const UserContext = React.createContext({
-  user: null,
+const UserContext = createContext({
+  user: {userEmail:"",userPassword:""},
   setUser: () => {},
 });
 

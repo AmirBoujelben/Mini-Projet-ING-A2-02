@@ -1,3 +1,6 @@
+import { useState } from "react";
+import UserContext from "./UserContext";
+
 //Provider Used to wrap components win bech ykoun el User Information Accessible
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);

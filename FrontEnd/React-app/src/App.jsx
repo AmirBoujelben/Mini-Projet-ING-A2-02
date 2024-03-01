@@ -1,17 +1,20 @@
-import { AccueilAdmin } from "./Admin/AccueilAdmin";
-import { DefaultDashAdmin } from "./Admin/DefaultDashAdmin";
+import { useContext } from "react";
+import UserContext from "./Context/UserContext";
+import UserProvider from "./Context/UserProvider";
 import { Accueil } from "./SharedPages/Accueil"
 import LoginPage from "./SharedPages/LoginPage";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
-  const user=false;
+  
   return (
-      
+    <UserProvider>
       <Routes>
-        <Route path="/" element={user?<Accueil/> : <LoginPage/>}/>
+        <Route path="/" element={<PrivateRoute><Accueil/></PrivateRoute>}/>
         <Route path="/Login" element={<LoginPage/>}/>
       </Routes>
+    </UserProvider>
   )
 }
 
