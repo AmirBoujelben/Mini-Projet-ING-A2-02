@@ -1,6 +1,6 @@
 
 
-export const ChesfDepGestEmploiEtud = () => {
+export const ChefDepGestEmploiEtud = () => {
   return (
     <div>ChesfDepGestEtud</div>
   )

@@ -1,5 +1,5 @@
 
-export const ChefDepGestEvents = () => {
+export const ChefDepGestEvent = () => {
   return (
     <div>ChefDepGestEvents</div>
   )

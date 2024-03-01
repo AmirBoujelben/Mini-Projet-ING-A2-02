@@ -1,6 +1,6 @@
 
 
-export const GestFiliere = () => {
+export const ChefDepGestFiliere = () => {
   return (
     <div>GestFiliere</div>
   )

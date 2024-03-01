@@ -1,5 +1,5 @@
 
-export const Events = () => {
+export const Event = () => {
   return (
     <div>Events</div>
   )

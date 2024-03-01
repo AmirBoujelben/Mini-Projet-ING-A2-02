@@ -14,7 +14,7 @@ export default function LoginForm() {
   const handleUpdateUser = (e, newUser) => {
     e.preventDefault() // Prevent form submission
     setUser(newUser)
-    navigate("/") 
+    navigate("/Etudiant") 
   }
   
 
