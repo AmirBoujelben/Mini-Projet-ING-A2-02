@@ -1,3 +1,5 @@
+import UserProvider from "./Context/UserProvider";
+import PrivateRoute from './PrivateRoute';
 import { Routes, Route } from "react-router-dom";
 
 //********   imports for Admin   *********// 
@@ -37,12 +39,13 @@ import LoginPage from "./SharedPages/LoginPage";
 
 
 function App() {
+  
   return (
-    <div>
+  <UserProvider>
       <Routes>
       <Route path="/Login" element={<LoginPage />} />
       
-        <Route path="/AdminDashboard" element={<DefaultDashAdmin />}>
+        <Route path="/AdminDashboard" element={<PrivateRoute><DefaultDashAdmin /></PrivateRoute>}>
           <Route index element={<AccueilAdmin />} />
           <Route path="Profile" element={<Profile />} />
           <Route path="GestionDepartement" element={<AdminGestDep />} />
@@ -51,7 +54,7 @@ function App() {
           <Route path="GestionEvenement" element={<AdminGestEvent />} />
         </Route>
 
-        <Route path="/ChefDepartementDashboard" element={<DefaultDashEnseig />}>
+        <Route path="/ChefDepartementDashboard" element={<PrivateRoute><DefaultDashEnseig /></PrivateRoute>}>
           <Route index element={<Accueil />} />
           <Route path="Profile" element={<Profile />} />
           <Route path="GestionFiliere" element={<ChefDepGestFiliere />} />
@@ -60,7 +63,7 @@ function App() {
           <Route path="GestionEvenenment" element={<ChefDepGestEvent />} />
         </Route>
 
-        <Route path="/EnseignantDashboard" element={<DefaultDashEnseig />}>
+        <Route path="/EnseignantDashboard" element={<PrivateRoute><DefaultDashEnseig /></PrivateRoute>}>
           <Route index element={<Accueil />} />
           <Route path="Profile" element={<Profile />} />
           <Route path="EmploiDeTemps" element={<Emploi />} />
@@ -71,7 +74,7 @@ function App() {
           <Route path="Evenement" element={<Event />} />
         </Route>
 
-        <Route path="/Etudiant" element={<DefaultDashEtud />}>
+        <Route path="/Etudiant" element={<PrivateRoute><DefaultDashEtud /></PrivateRoute>}>
           <Route index element={<Accueil />} />
           <Route path="Profile" element={<Profile />} />
           <Route path="EmploiDeTemps" element={<Emploi />} />
@@ -83,8 +86,8 @@ function App() {
         </Route>
 
       </Routes>
-    </div>
-  );
+    </UserProvider>
+  )
 }
 
 export default App;
