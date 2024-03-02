@@ -7,12 +7,13 @@ import { useContext } from "react";
 export default function LoginForm() {
 
   const navigate = useNavigate()
-  const { user, setUser } = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
 
   const handleUpdateUser = (e, newUser) => {
     e.preventDefault() // Prevent form submission
+    sessionStorage.setItem("user", JSON.stringify(newUser))
     setUser(newUser)
     navigate("/Etudiant") 
   }

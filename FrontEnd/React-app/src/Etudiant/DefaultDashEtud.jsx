@@ -1,14 +1,11 @@
-import { Outlet } from "react-router-dom"
-import { useContext } from "react"
-import UserContext from "../Context/UserContext"
+import { Outlet } from "react-router-dom";
+import { SideNavbar } from "../SharedComponents/SideNavbar";
 
 export const DefaultDashEtud = () => {
-  const { user, setUser } = useContext(UserContext)
-
   return (
     <div>
-      <h1>DefaultDashEtud for {user.userEmail}</h1>
+      <SideNavbar />
       <Outlet />
     </div>
-  )
-}
+  );
+};

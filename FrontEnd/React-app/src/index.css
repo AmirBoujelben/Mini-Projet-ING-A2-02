@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.active {
+    @apply translate-x-2;
+}
+
 /* !Reset styles*/
 *, *:before, *:after{
     box-sizing: border-box;
