@@ -10,11 +10,27 @@ export default function LoginForm() {
   const { user, setUser } = useContext(UserContext)
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
+  const [userRole, setUserRole] = useState('');
+
+  const handleOnChange = (e) => {
+    setUserRole(e.target.value);
+  }
+
 
   const handleUpdateUser = (e, newUser) => {
     e.preventDefault() // Prevent form submission
     setUser(newUser)
-    navigate("/Etudiant") 
+    console.log(newUser); // Log the newUser object
+    if (newUser.userRole == "Etudiant") {
+      console.log("Navigating to /Etudiant"); // Log a message
+      navigate("/Etudiant");
+    } else if (newUser.userRole == "Admin") {
+      console.log("Navigating to /AdminDashboard"); // Log a message
+      navigate("/AdminDashboard");
+    } else if (newUser.userRole == "Enseignant") {
+      console.log("Navigating to /EnseignantDashboard"); // Log a message
+      navigate("/EnseignantDashboard");
+    }
   }
   
 
@@ -48,6 +64,38 @@ export default function LoginForm() {
           className="h-10 border border-gray-300 rounded-md px-4 py-2"
         />
       </div>
+      <div name="userRole" className="mt-8 flex">
+      <div className="flex mr-5">
+        <input 
+          type="radio" 
+          name="role"
+          value="Admin"
+          checked={userRole === 'Admin'}
+          onChange={handleOnChange}
+        />
+        <label>Admin</label>
+      </div>
+      <div className="flex mr-5">
+        <input 
+          type="radio" 
+          name="role"
+          value="Enseignant"
+          checked={userRole === 'Enseignant'}
+          onChange={handleOnChange}
+        />
+        <label>Enseignant</label>
+      </div>
+      <div className="flex mr-5">
+        <input 
+          type="radio" 
+          name="role"
+          value="Etudiant"
+          checked={userRole === 'Etudiant'}
+          onChange={handleOnChange}
+        />
+        <label>Etudiant</label>
+      </div>
+    </div>
       <div className="mt-8 flex">
         <div className="flex mr-5">
           <input type="checkbox" />
@@ -57,9 +105,10 @@ export default function LoginForm() {
           Mot de Passe oublié?
         </a>
       </div>
+
           <button 
           className="flex flex-row justify-center items-center mt-8 border w-full h-10 rounded-lg bg-cyan-900 text-white" 
-          onClick={(e)=>handleUpdateUser(e, {userEmail:email,userPassword:password})}>
+          onClick={(e)=>handleUpdateUser(e, {userEmail:email,userPassword:password,Role:userRole})}>
             Connexion
           </button>
 

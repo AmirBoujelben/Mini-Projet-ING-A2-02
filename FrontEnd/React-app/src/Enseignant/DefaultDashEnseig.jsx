@@ -7,6 +7,7 @@ export const DefaultDashEnseig = () => {
 
   return (
     <div>
+      <SideNavbar/>
       <h1>DefaultDashEtud for {user.userEmail}</h1>
       <Outlet />
     </div>

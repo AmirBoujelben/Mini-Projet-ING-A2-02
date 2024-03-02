@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import issatLogo from "../assets/issatso_logo.jpg";
+import { useContext } from "react";
+import UserContext from "../Context/UserContext"
 
 export const SideNavbar = () => {
+  const user = useContext(UserContext)
+  if (user.Role == "Etudiant") 
   return (
+    
     <div className="h-[100vh] w-[22vw] text-[#365B78]">
+      
       <Link to={"/Accueil"}>
         <img
           className="mt-[2rem] mx-[1.5rem] h-[4rem] mb-[5rem] cursor-pointer"
@@ -12,8 +18,7 @@ export const SideNavbar = () => {
         />
       </Link>
 
-      <Link
-        to={"/Accueil"}
+      <Link to={"/Accueil"}
         className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
@@ -41,8 +46,8 @@ export const SideNavbar = () => {
         </svg>
         <p>Accueil</p>
       </Link>
-      <Link
-        to={"/EmploiDeTemps"}
+      
+      <Link to={"EmploiDeTemps"}
         className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
@@ -69,8 +74,8 @@ export const SideNavbar = () => {
         </svg>
         <p>Emploi de temps</p>
       </Link>
-      <Link
-        to={"/ListeDesGroupes"}
+
+      <Link to={"ListeDesGroupes"}
         className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
@@ -98,8 +103,8 @@ export const SideNavbar = () => {
         </svg>
         <p>Liste des groupes</p>
       </Link>
-      <Link
-        to={"/SupportDuCours"}
+
+      <Link to={"SupportDuCours"}
         className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
@@ -127,8 +132,8 @@ export const SideNavbar = () => {
         </svg>
         <p>Support du cours</p>
       </Link>
-      <Link
-        to={"/NoteEtAbsence"}
+      
+      <Link to={"NoteEtAbsence"}
         className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
@@ -153,6 +158,12 @@ export const SideNavbar = () => {
         </svg>
         <p>Notes & Absence</p>
       </Link>
+      
     </div>
-  );
+    )
+    else if (user.Role == "Admin") 
+    return(<h1>NavBar Admin</h1>)
+
+    else if (user.Role == "Enseignant") 
+    return(<h1>NavBar Enseignant</h1>)
 };

@@ -7,6 +7,7 @@ export const DefaultDashAdmin = () => {
 
   return (
     <div>
+      <SideNavbar/>
       <h1>DefaultDashAdmin for {user.userEmail}</h1>
       <Outlet />
     </div>

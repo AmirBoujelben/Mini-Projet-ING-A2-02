@@ -7,7 +7,6 @@ export const Accueil = () => {
 
   return (
     <div className="flex items-center">
-      <SideNavbar/>
       <p>Bienvenue cher {user.userEmail}</p>
     </div>
   )
