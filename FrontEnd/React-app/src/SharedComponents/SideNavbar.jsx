@@ -1,9 +1,22 @@
-import { NavLink, Link } from "react-router-dom";
+
+import {  useNavigate, NavLink, Link } from "react-router-dom";
 import issatLogo from "../assets/issatso_logo.jpg";
+import { useState } from "react";
+import DisconnectPopUp from "./DisconnectPopUp";
 
 export const SideNavbar = () => {
+
+  const navigate = useNavigate();
+
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+
+  const handleDisconnect = () => {
+    sessionStorage.clear();
+    navigate('/Login');
+  };
+
   return (
-    <div className="h-[100vh] min-w-[15rem] bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] overflow-hidden">
+    <div className="h-screen min-w-[15rem] bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] overflow-hidden">
       <Link to={""}>
         <img
           className="mt-[2rem] mx-auto h-[4rem] mb-[5rem] cursor-pointer"
@@ -70,7 +83,6 @@ export const SideNavbar = () => {
             ></path>
           </g>
         </svg>
-
         <p>Profile</p>
       </NavLink>
       <NavLink
@@ -238,8 +250,9 @@ export const SideNavbar = () => {
         </svg>
         <p>Evenement</p>
       </NavLink>
-      <NavLink
-        to={"/Login"}
+      <Link
+        to={"#"}
+        onClick={() => setIsPopUpOpen(true)}
         className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] text-[#365B78] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
@@ -272,7 +285,8 @@ export const SideNavbar = () => {
           </g>
         </svg>
         <p className="text-[#b80000]">Déconnecter</p>
-      </NavLink>
+      </Link>
+      <DisconnectPopUp isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)} onDisconnect={handleDisconnect} />
     </div>
   );
 };
