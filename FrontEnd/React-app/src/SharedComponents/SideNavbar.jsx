@@ -1,23 +1,34 @@
-import { NavLink } from "react-router-dom";
+
+import {  useNavigate, NavLink, Link } from "react-router-dom";
 import issatLogo from "../assets/issatso_logo.jpg";
-import { useContext } from "react";
-import UserContext from "../Context/UserContext"
+import { useState } from "react";
+import DisconnectPopUp from "./DisconnectPopUp";
 
 export const SideNavbar = () => {
-  const user = useContext(UserContext)
-  if (user.Role === "Etudiant") 
+
+  const navigate = useNavigate();
+
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+
+  const handleDisconnect = () => {
+    sessionStorage.clear();
+    navigate('/Login');
+  };
+
+  if (user.Role == "Etudiant") 
   return (
-    
-    <div className="h-[100vh] w-[22vw] text-[#365B78]">
-      <NavLink to={""}>
+    <div className="h-screen min-w-[15rem] bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] overflow-hidden">
+      <Link to={""}>
         <img
-          className="mt-[2rem] mx-[1.5rem] h-[4rem] mb-[5rem] cursor-pointer"
+          className="mt-[2rem] mx-auto h-[4rem] mb-[5rem] cursor-pointer"
           src={issatLogo}
           alt="Issat Logo"
         />
-      </NavLink>
-      <NavLink to={"/Etudiant"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out "
+      </Link>
+      <NavLink
+        end
+        to={"/Etudiant"}
+        className="relative flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] text-[#365B78]  p-[0.75rem] hover:translate-x-2 transition-all ease-in-out bg-[#FBFBFB]"
       >
         <svg
           className="icon glyph h-[1.5rem] w-[1.5rem]"
@@ -44,10 +55,12 @@ export const SideNavbar = () => {
         </svg>
         <p>Accueil</p>
       </NavLink>
-      <NavLink to={"Profile"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out "
+      <NavLink
+        to={"Profile"}
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] text-[#365B78] p-[0.75rem] hover:translate-x-2 transition-all ease-in-out bg-[#FBFBFB] "
       >
         <svg
+          id="profileIcon"
           className=" h-[1.5rem] w-[1.5rem]"
           width="64px"
           height="64px"
@@ -71,11 +84,11 @@ export const SideNavbar = () => {
             ></path>
           </g>
         </svg>
-
         <p>Profile</p>
       </NavLink>
-      <NavLink to={"EmploiDeTemps"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+      <NavLink
+        to={"EmploiDeTemps"}
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] text-[#365B78] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out bg-[#FBFBFB]"
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -101,8 +114,9 @@ export const SideNavbar = () => {
         </svg>
         <p>Emploi de temps</p>
       </NavLink>
-      <NavLink to={"ListeDeGroupe"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+      <NavLink
+        to={"ListeDeGroupe"}
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] text-[#365B78] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out bg-[#FBFBFB]"
       >
         <svg
           className="h-[1.45rem] w-[1.5rem]"
@@ -129,8 +143,9 @@ export const SideNavbar = () => {
         </svg>
         <p>Liste de groupe</p>
       </NavLink>
-      <NavLink  to={"SupportDeCours"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+      <NavLink
+        to={"SupportDeCours"}
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] text-[#365B78] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out bg-[#FBFBFB]"
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -156,8 +171,9 @@ export const SideNavbar = () => {
         </svg>
         <p>Support du cours</p>
       </NavLink>
-      <NavLink  to={"Notes"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+      <NavLink
+        to={"Notes"}
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] text-[#365B78] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out bg-[#FBFBFB]"
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -180,8 +196,9 @@ export const SideNavbar = () => {
         </svg>
         <p>Notes</p>
       </NavLink>
-      <NavLink to={"Rattrapage"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+      <NavLink
+        to={"Rattrapage"}
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] text-[#365B78] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out bg-[#FBFBFB]"
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -207,8 +224,9 @@ export const SideNavbar = () => {
         </svg>
         <p>Rattrapage</p>
       </NavLink>
-      <NavLink to={"Evenement"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+      <NavLink
+        to={"Evenement"}
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] text-[#365B78] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out bg-[#FBFBFB]"
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -233,8 +251,10 @@ export const SideNavbar = () => {
         </svg>
         <p>Evenement</p>
       </NavLink>
-      <NavLink to={"/Login"}
-        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
+      <Link
+        to={"#"}
+        onClick={() => setIsPopUpOpen(true)}
+        className="flex flex-row px-[1.5rem] justify-start items-center gap-[0.75rem] text-[#365B78] p-[0.75rem]	hover:translate-x-2 transition-all ease-in-out"
       >
         <svg
           className="h-[1.5rem] w-[1.5rem]"
@@ -266,7 +286,8 @@ export const SideNavbar = () => {
           </g>
         </svg>
         <p className="text-[#b80000]">Déconnecter</p>
-      </NavLink>
+      </Link>
+      <DisconnectPopUp isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)} onDisconnect={handleDisconnect} />
     </div>
     )
     else if (user.Role == "Admin") 
