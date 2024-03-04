@@ -7,7 +7,7 @@ import { useContext } from "react";
 export default function LoginForm() {
 
   const navigate = useNavigate()
-  const { user, setUser } = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
   const [userRole, setUserRole] = useState('');
@@ -19,15 +19,19 @@ export default function LoginForm() {
 
   const handleUpdateUser = (e, newUser) => {
     e.preventDefault() // Prevent form submission
-    setUser(newUser)
+    sessionStorage.setItem("user", JSON.stringify(newUser))
+    //setUser(newUser)
     console.log(newUser); // Log the newUser object
-    if (newUser.userRole == "Etudiant") {
+
+    if (newUser && newUser.Role === "Etudiant") {
       console.log("Navigating to /Etudiant"); // Log a message
       navigate("/Etudiant");
-    } else if (newUser.userRole == "Admin") {
+    }
+    if (newUser && newUser.Role === "Admin") {
       console.log("Navigating to /AdminDashboard"); // Log a message
       navigate("/AdminDashboard");
-    } else if (newUser.userRole == "Enseignant") {
+    }
+    if (newUser && newUser.Role === "Enseignant") {
       console.log("Navigating to /EnseignantDashboard"); // Log a message
       navigate("/EnseignantDashboard");
     }
@@ -38,13 +42,13 @@ export default function LoginForm() {
 
 
   return (
-    <div className="bg-white rounded-md w-max p-8 flex flex-col justify-center items-center h-max ">
+    <div className="bg-white rounded-md w-max m-4 p-8 flex flex-col justify-center items-center">
       <img src={Logo} alt="" className="w-36" />
       <h1 className=" text-lg">Bienvenue</h1>
       <p className="text-gray-400">
         Connectez-vous pour accéder à Votre Digital University
       </p>
-      <div className="mt-14 flex flex-col w-full">
+      <div className="mt-10 flex flex-col w-full">
         <label>E-mail</label>
         <input
           type="text"
@@ -64,7 +68,7 @@ export default function LoginForm() {
           className="h-10 border border-gray-300 rounded-md px-4 py-2"
         />
       </div>
-      <div name="userRole" className="mt-8 flex">
+      <div name="userRole" className="mt-4 flex">
       <div className="flex mr-5">
         <input 
           type="radio" 
@@ -112,7 +116,7 @@ export default function LoginForm() {
             Connexion
           </button>
 
-      <p className="mt-8 mb-10">
+      <p className="mt-8 mb-4">
         Nouveau Utilisateur?
         <a href="" className="underline hover:text-cyan-700">
           Inscrivez-Vous!

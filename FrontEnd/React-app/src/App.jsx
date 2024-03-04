@@ -1,4 +1,4 @@
-import UserProvider from "./Context/UserProvider";
+
 import PrivateRoute from './PrivateRoute';
 import { Routes, Route } from "react-router-dom";
 
@@ -41,7 +41,6 @@ import LoginPage from "./SharedPages/LoginPage";
 function App() {
   
   return (
-  <UserProvider>
       <Routes>
       <Route path="/Login" element={<LoginPage />} />
       
@@ -86,7 +85,6 @@ function App() {
         </Route>
 
       </Routes>
-    </UserProvider>
   )
 }
 

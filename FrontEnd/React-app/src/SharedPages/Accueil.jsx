@@ -1,9 +1,8 @@
-import { SideNavbar } from "../SharedComponents/SideNavbar"
-import { useContext } from "react"
 import UserContext from "../Context/UserContext"
+import { useContext } from "react"
 
 export const Accueil = () => {
-  const { user, setUser } = useContext(UserContext)
+  const user=useContext(UserContext)
 
   return (
     <div className="flex items-center">
