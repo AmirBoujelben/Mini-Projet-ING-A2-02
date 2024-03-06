@@ -4,6 +4,7 @@ import profileImg from "../assets/profile.jpg";
 export const Profile = () => {
   const [Adresse, setAdresse] = useState("Sousse, Tunis");
   const [phone, setPhone] = useState("99 999 999");
+  const user =JSON.parse(sessionStorage.getItem("user"))
 
   //!handling image upload
   const [selectedImage, setSelectedImage] = useState(null);
@@ -34,7 +35,7 @@ export const Profile = () => {
           src={selectedImage ? selectedImage : profileImg}
           alt=""
         />
-        <p className="text-2xl font-medium">Nom d'étudiant</p>
+        <p className="text-2xl font-medium">Nom d'{user.Role}</p>
         <p>2éme cycle ingénieur</p>
         <p>Génie Logiciel</p>
         <label
@@ -60,10 +61,10 @@ export const Profile = () => {
 
           <div className="grid grid-cols-2 gap-6">
             <div className="flex flex-col mb-4">
-              <label className="text-sm font-medium">Nom d'étudiant(e)</label>
+              <label className="text-sm font-medium">Nom d'{user.Role}</label>
               <input
                 type="text"
-                placeholder="VOTRE NOM D'ETUDAINT"
+                placeholder="VOTRE NOM"
                 className="mt-1 px-6 py-3 border border-gray-300 rounded"
                 disabled
               />

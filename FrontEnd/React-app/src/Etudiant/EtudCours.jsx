@@ -1,6 +1,6 @@
 
 export const EtudCours = () => {
   return (
-    <div>hhhhhhhhhhhhhhhhh</div>
+    <div>Etudiant Cours</div>
   )
 }

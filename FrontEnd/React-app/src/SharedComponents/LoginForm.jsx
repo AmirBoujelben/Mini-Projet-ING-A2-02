@@ -1,16 +1,13 @@
 import { useState } from "react";
 import Logo from "../assets/Logo.jpg";
 import { useNavigate } from "react-router-dom";
-import UserContext from "../Context/UserContext"
-import { useContext } from "react";
 
 export default function LoginForm() {
 
   const navigate = useNavigate()
-  const { setUser } = useContext(UserContext)
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
-  const [userRole, setUserRole] = useState('');
+  const [userRole, setUserRole] = useState('Admin');
 
   const handleOnChange = (e) => {
     setUserRole(e.target.value);
@@ -35,6 +32,10 @@ export default function LoginForm() {
       console.log("Navigating to /EnseignantDashboard"); // Log a message
       navigate("/EnseignantDashboard");
     }
+    if (newUser && newUser.Role === "ChefDepartment") {
+      console.log("Navigating to /ChefDepartementDashboard"); // Log a message
+      navigate("/ChefDepartementDashboard");
+    }
   }
   
 
@@ -58,7 +59,7 @@ export default function LoginForm() {
           className="h-10 border border-gray-300 rounded-md px-4 py-2 "
         />
       </div>
-      <div className="mt-8 flex flex-col w-full">
+      <div className="mt-2 flex flex-col w-full">
         <label>Password</label>
         <input
           type="password"
@@ -68,38 +69,15 @@ export default function LoginForm() {
           className="h-10 border border-gray-300 rounded-md px-4 py-2"
         />
       </div>
-      <div name="userRole" className="mt-4 flex">
-      <div className="flex mr-5">
-        <input 
-          type="radio" 
-          name="role"
-          value="Admin"
-          checked={userRole === 'Admin'}
-          onChange={handleOnChange}
-        />
-        <label>Admin</label>
+      <div className="mt-4 w-full">
+      <label>Role</label>
+      <select className="w-full border border-gray-300 rounded-md px-4 py-2" name="role" value={userRole} onChange={handleOnChange}>
+        <option value="Admin">Admin</option>
+        <option value="Enseignant">Enseignant</option>
+        <option value="Etudiant">Etudiant</option>
+        <option value="ChefDepartment">Chef Department</option>
+      </select>
       </div>
-      <div className="flex mr-5">
-        <input 
-          type="radio" 
-          name="role"
-          value="Enseignant"
-          checked={userRole === 'Enseignant'}
-          onChange={handleOnChange}
-        />
-        <label>Enseignant</label>
-      </div>
-      <div className="flex mr-5">
-        <input 
-          type="radio" 
-          name="role"
-          value="Etudiant"
-          checked={userRole === 'Etudiant'}
-          onChange={handleOnChange}
-        />
-        <label>Etudiant</label>
-      </div>
-    </div>
       <div className="mt-8 flex">
         <div className="flex mr-5">
           <input type="checkbox" />

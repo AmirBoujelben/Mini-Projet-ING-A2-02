@@ -1,8 +1,7 @@
-import UserContext from "../Context/UserContext"
-import { useContext } from "react"
+
 
 export const Accueil = () => {
-  const user=useContext(UserContext)
+  const user = JSON.parse(sessionStorage.getItem("user"))
 
   return (
     <div className="flex items-center">

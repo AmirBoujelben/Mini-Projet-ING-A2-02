@@ -3,9 +3,11 @@ import { SideNavbar } from "../SharedComponents/SideNavbar"
 
 export const DefaultDashEnseig = () => {
   return (
-    <div>
+    <div className="flex flex-row bg-[#EEFBFF]">
       <SideNavbar />
-      <Outlet />
+      <div className="my-12 w-screen mx-10">
+        <Outlet />
+      </div>
     </div>
   )
 }
