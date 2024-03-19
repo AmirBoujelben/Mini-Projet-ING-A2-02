@@ -35,7 +35,7 @@ export const Profile = () => {
           src={selectedImage ? selectedImage : profileImg}
           alt=""
         />
-        <p className="text-2xl font-medium">Nom d'{user.Role}</p>
+        <p className="text-2xl font-medium">Nom d'{user.userRole}</p>
         <p>2éme cycle ingénieur</p>
         <p>Génie Logiciel</p>
         <label
@@ -61,7 +61,7 @@ export const Profile = () => {
 
           <div className="grid grid-cols-2 gap-6">
             <div className="flex flex-col mb-4">
-              <label className="text-sm font-medium">Nom d'{user.Role}</label>
+              <label className="text-sm font-medium">Nom d'{user.userRole}</label>
               <input
                 type="text"
                 placeholder="VOTRE NOM"

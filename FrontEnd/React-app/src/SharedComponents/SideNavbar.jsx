@@ -16,7 +16,7 @@ export const SideNavbar = () => {
     navigate('/Login');
   };
 
-  if (user.Role == "Etudiant") 
+  if (user.userRole == "etudiant") 
   return (
     <div className="h-screen min-w-[15rem] bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] overflow-hidden">
       <Link to={""}>
@@ -291,7 +291,7 @@ export const SideNavbar = () => {
       <DisconnectPopUp isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)} onDisconnect={handleDisconnect} />
     </div>
     )
-    else if (user.Role == "Admin") 
+    else if (user.userRole == "admin") 
     return(
           <div className="h-screen min-w-[15rem] bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] overflow-hidden">
       <Link to={""}>
@@ -398,7 +398,7 @@ export const SideNavbar = () => {
     </div>  
     )
 
-    else if (user.Role == "ChefDepartment") 
+    else if (user.userRole == "chefDepartment") 
     return(
       <div className="h-screen min-w-[15rem] bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] overflow-hidden">
       <Link to={""}>
@@ -590,7 +590,7 @@ export const SideNavbar = () => {
     </div>
       )
 
-    else if (user.Role == "Enseignant") 
+    else if (user.userRole == "enseignant") 
     return(
     <div className="h-screen min-w-[15rem] bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] overflow-hidden">
       <Link to={""}>

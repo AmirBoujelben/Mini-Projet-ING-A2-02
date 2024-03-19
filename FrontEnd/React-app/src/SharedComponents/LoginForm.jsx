@@ -13,33 +13,57 @@ export default function LoginForm() {
     setUserRole(e.target.value);
   }
 
+  const loginUser = async (email, password) => {
+    const response = await fetch('http://localhost:5700/user/Login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
+  
+    if (!response.ok) {
+      throw new Error('Login failed!');
+    }
+  
+    const data = await response.json();
+    return data;
+  };
 
-  const handleUpdateUser = (e, newUser) => {
+
+  const handleLogin = (e, User) => {
     e.preventDefault() // Prevent form submission
-    sessionStorage.setItem("user", JSON.stringify(newUser))
-    //setUser(newUser)
-    console.log(newUser); // Log the newUser object
 
-    if (newUser && newUser.Role === "Etudiant") {
-      console.log("Navigating to /Etudiant"); // Log a message
-      navigate("/Etudiant");
-    }
-    if (newUser && newUser.Role === "Admin") {
-      console.log("Navigating to /AdminDashboard"); // Log a message
-      navigate("/AdminDashboard");
-    }
-    if (newUser && newUser.Role === "Enseignant") {
-      console.log("Navigating to /EnseignantDashboard"); // Log a message
-      navigate("/EnseignantDashboard");
-    }
-    if (newUser && newUser.Role === "ChefDepartment") {
-      console.log("Navigating to /ChefDepartementDashboard"); // Log a message
-      navigate("/ChefDepartementDashboard");
-    }
+    console.log(User); // Log the User object
+
+    loginUser(User.userEmail, User.userPassword)
+    .then(data => {
+      console.log(data); // { token, userId, userEmail, userAvatar, userRole}
+      sessionStorage.setItem("user",JSON.stringify(data))
+      if (data.userRole === "etudiant") {
+        console.log("Navigating to /Etudiant"); // Log a message
+        navigate("/Etudiant");
+      }
+      if (data.userRole === "admin") {
+        console.log("Navigating to /AdminDashboard"); // Log a message
+        navigate("/AdminDashboard");
+      }
+      if (data.userRole === "enseignant") {
+        console.log("Navigating to /EnseignantDashboard"); // Log a message
+        navigate("/EnseignantDashboard");
+      }
+      if (data.userRole=== "chefDepartment") {
+        console.log("Navigating to /ChefDepartementDashboard"); // Log a message
+        navigate("/ChefDepartementDashboard");
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+    
+
   }
   
-
-
 
 
   return (
@@ -69,7 +93,7 @@ export default function LoginForm() {
           className="h-10 border border-gray-300 rounded-md px-4 py-2"
         />
       </div>
-      <div className="mt-4 w-full">
+      {/* <div className="mt-4 w-full">
       <label>Role</label>
       <select className="w-full border border-gray-300 rounded-md px-4 py-2" name="role" value={userRole} onChange={handleOnChange}>
         <option value="Admin">Admin</option>
@@ -77,7 +101,7 @@ export default function LoginForm() {
         <option value="Etudiant">Etudiant</option>
         <option value="ChefDepartment">Chef Department</option>
       </select>
-      </div>
+      </div> */}
       <div className="mt-8 flex">
         <div className="flex mr-5">
           <input type="checkbox" />
@@ -90,7 +114,7 @@ export default function LoginForm() {
 
           <button 
           className="flex flex-row justify-center items-center mt-8 border w-full h-10 rounded-lg bg-cyan-900 text-white" 
-          onClick={(e)=>handleUpdateUser(e, {userEmail:email,userPassword:password,Role:userRole})}>
+          onClick={(e)=>handleLogin(e, {userEmail:email,userPassword:password,Role:userRole})}>
             Connexion
           </button>
 

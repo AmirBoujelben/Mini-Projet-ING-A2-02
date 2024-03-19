@@ -4,7 +4,7 @@ function PrivateRoute({ children }) {
 
   const userData = JSON.parse(sessionStorage.getItem("user"));
 
-  const isAuthenticated =  userData.userPassword && userData.userEmail;
+  const isAuthenticated =  userData.userEmail;
   
   return isAuthenticated ? children : <Navigate to="/Login" />;
 }
