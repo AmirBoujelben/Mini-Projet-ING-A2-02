@@ -7,39 +7,39 @@ export default function LoginForm() {
   const navigate = useNavigate()
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
-  const [userRole, setUserRole] = useState('Admin');
-
-  const handleOnChange = (e) => {
-    setUserRole(e.target.value);
-  }
+  const [error, setError] = useState(null);
 
   const loginUser = async (email, password) => {
-    const response = await fetch('http://localhost:5700/user/Login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    });
-  
-    if (!response.ok) {
-      throw new Error('Login failed!');
+    try {
+      const response = await fetch('http://localhost:5700/user/Login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+    
+      if (!response.ok) {
+        throw new Error('Login failed!');
+      }
+    
+      const data = await response.json();
+      return data;
     }
-  
-    const data = await response.json();
-    return data;
+    catch{(error)=>console.log(error)}
+
   };
 
 
   const handleLogin = (e, User) => {
     e.preventDefault() // Prevent form submission
-
-    console.log(User); // Log the User object
-
     loginUser(User.userEmail, User.userPassword)
     .then(data => {
-      console.log(data); // { token, userId, userEmail, userAvatar, userRole}
-      sessionStorage.setItem("user",JSON.stringify(data))
+      if (!data) {
+        setError('E-mail/Password Incorrects');
+      } else {
+      console.log(data); // { token, userId, userEmail, userAvatar, userRole} 
+      sessionStorage.setItem("user", JSON.stringify(data))
       if (data.userRole === "etudiant") {
         console.log("Navigating to /Etudiant"); // Log a message
         navigate("/Etudiant");
@@ -52,10 +52,11 @@ export default function LoginForm() {
         console.log("Navigating to /EnseignantDashboard"); // Log a message
         navigate("/EnseignantDashboard");
       }
-      if (data.userRole=== "chefDepartment") {
+      if (data.userRole=== "chefDepartement") {
         console.log("Navigating to /ChefDepartementDashboard"); // Log a message
         navigate("/ChefDepartementDashboard");
       }
+    }
     })
     .catch(error => {
       console.error('Error:', error);
@@ -73,6 +74,7 @@ export default function LoginForm() {
       <p className="text-gray-400">
         Connectez-vous pour accéder à Votre Digital University
       </p>
+      
       <div className="mt-10 flex flex-col w-full">
         <label>E-mail</label>
         <input
@@ -92,21 +94,10 @@ export default function LoginForm() {
           placeholder="Password"
           className="h-10 border border-gray-300 rounded-md px-4 py-2"
         />
+        
       </div>
-      {/* <div className="mt-4 w-full">
-      <label>Role</label>
-      <select className="w-full border border-gray-300 rounded-md px-4 py-2" name="role" value={userRole} onChange={handleOnChange}>
-        <option value="Admin">Admin</option>
-        <option value="Enseignant">Enseignant</option>
-        <option value="Etudiant">Etudiant</option>
-        <option value="ChefDepartment">Chef Department</option>
-      </select>
-      </div> */}
-      <div className="mt-8 flex">
-        <div className="flex mr-5">
-          <input type="checkbox" />
-          <label>Se souvenir de moi</label>
-        </div>
+      {error && <p className="text-red-500 underline">{error}</p>}
+      <div className="mt-6 flex">
         <a href="" className="ml-5 underline hover:text-cyan-700">
           Mot de Passe oublié?
         </a>
@@ -114,7 +105,7 @@ export default function LoginForm() {
 
           <button 
           className="flex flex-row justify-center items-center mt-8 border w-full h-10 rounded-lg bg-cyan-900 text-white" 
-          onClick={(e)=>handleLogin(e, {userEmail:email,userPassword:password,Role:userRole})}>
+          onClick={(e)=>handleLogin(e, {userEmail:email,userPassword:password})}>
             Connexion
           </button>
 
