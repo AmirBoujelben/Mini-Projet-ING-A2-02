@@ -3,69 +3,64 @@ import Logo from "../assets/Logo.jpg";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
-
-  const navigate = useNavigate()
-  const [email,setEmail]=useState("")
-  const [password,setPassword]=useState("")
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState("false");
 
   const loginUser = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:5700/user/Login', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5700/user/Login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
       });
-    
+
       if (!response.ok) {
-        throw new Error('Login failed!');
+        throw new Error("Login failed!");
       }
-    
+
       const data = await response.json();
       return data;
+    } catch {
+      (error) => console.log(error);
     }
-    catch{(error)=>console.log(error)}
-
   };
 
-
   const handleLogin = (e, User) => {
-    e.preventDefault() // Prevent form submission
+    e.preventDefault(); // Prevent form submission
     loginUser(User.userEmail, User.userPassword)
-    .then(data => {
-      if (!data) {
-        setError('E-mail/Password Incorrects');
-      } else {
-      console.log(data); // { token, userId, userEmail, userAvatar, userRole} 
-      sessionStorage.setItem("user", JSON.stringify(data))
-      if (data.userRole === "etudiant") {
-        console.log("Navigating to /Etudiant"); // Log a message
-        navigate("/Etudiant");
-      }
-      if (data.userRole === "admin") {
-        console.log("Navigating to /AdminDashboard"); // Log a message
-        navigate("/AdminDashboard");
-      }
-      if (data.userRole === "enseignant") {
-        console.log("Navigating to /EnseignantDashboard"); // Log a message
-        navigate("/EnseignantDashboard");
-      }
-      if (data.userRole=== "chefDepartement") {
-        console.log("Navigating to /ChefDepartementDashboard"); // Log a message
-        navigate("/ChefDepartementDashboard");
-      }
-    }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-    
-
-  }
-  
-
+      .then((data) => {
+        if (!data) {
+          setError("E-mail/Password Incorrects");
+        } else {
+          console.log(data); // { token, userId, userEmail, userAvatar, userRole}
+          sessionStorage.setItem("user", JSON.stringify(data));
+          if (data.userRole === "etudiant") {
+            console.log("Navigating to /Etudiant"); // Log a message
+            navigate("/Etudiant");
+          }
+          if (data.userRole === "admin") {
+            console.log("Navigating to /AdminDashboard"); // Log a message
+            navigate("/AdminDashboard");
+          }
+          if (data.userRole === "enseignant") {
+            console.log("Navigating to /EnseignantDashboard"); // Log a message
+            navigate("/EnseignantDashboard");
+          }
+          if (data.userRole === "chefDepartement") {
+            console.log("Navigating to /ChefDepartementDashboard"); // Log a message
+            navigate("/ChefDepartementDashboard");
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <div className="bg-white rounded-md m-4 p-8 flex flex-col justify-center items-center shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
@@ -74,7 +69,7 @@ export default function LoginForm() {
       <p className="text-[#365B78]">
         Connectez-vous pour accéder à Votre Université digital
       </p>
-      
+
       <div className="mt-10 flex flex-col w-full">
         <label>E-mail</label>
         <input
@@ -142,7 +137,6 @@ export default function LoginForm() {
           placeholder="Entrer votre mot de passe"
           className="h-10 border border-gray-300 rounded-md px-4 py-2"
         />
-        
       </div>
       {error && <p className="text-red-500 underline">{error}</p>}
       <div className="mt-6 flex">
@@ -151,11 +145,14 @@ export default function LoginForm() {
         </a>
       </div>
 
-          <button 
-          className="flex flex-row justify-center items-center mt-8 border w-full h-10 rounded-lg bg-cyan-900 text-white" 
-          onClick={(e)=>handleLogin(e, {userEmail:email,userPassword:password})}>
-            Connexion
-          </button>
+      <button
+        className="flex flex-row justify-center items-center mt-8 border w-full h-10 rounded-lg bg-cyan-900 text-white"
+        onClick={(e) =>
+          handleLogin(e, { userEmail: email, userPassword: password })
+        }
+      >
+        Connexion
+      </button>
 
       <p className="mt-4 mb-4  text-[#002b45]">
         Nouveau Utilisateur?
