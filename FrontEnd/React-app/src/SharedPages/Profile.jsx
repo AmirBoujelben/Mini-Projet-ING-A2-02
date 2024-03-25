@@ -120,7 +120,7 @@ export const Profile = () => {
               <svg
                 style={{ display: showPassword ? "block" : "none" }}
                 onClick={() => setShowPassword(false)}
-                className="h-6 w-6 absolute right-6 top-[50%] translate-y-[-40%]"
+                className="cursor-pointer h-6 w-6 absolute right-6 top-[50%] translate-y-[-40%]"
                 fill="#000000"
                 width="64px"
                 height="64px"
@@ -144,7 +144,7 @@ export const Profile = () => {
               <svg
                 style={{ display: showPassword ? "none" : "block" }}
                 onClick={() => setShowPassword(true)}
-                className="h-6 w-6 absolute right-6 top-[50%] translate-y-[-40%]"
+                className="cursor-pointer h-6 w-6 absolute right-6 top-[50%] translate-y-[-40%]"
                 fill="#A8A3AF"
                 width="64px"
                 height="64px"
