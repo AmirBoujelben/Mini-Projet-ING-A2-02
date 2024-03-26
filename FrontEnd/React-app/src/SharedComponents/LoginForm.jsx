@@ -104,14 +104,14 @@ export default function LoginForm() {
       </div>
 
           <button 
-          className="flex flex-row justify-center items-center mt-8 border w-full h-10 rounded-lg bg-cyan-900 text-white" 
+          className="flex flex-row justify-center items-center mt-8 border w-full h-10 rounded-lg bg-sky-900 text-white" 
           onClick={(e)=>handleLogin(e, {userEmail:email,userPassword:password})}>
             Connexion
           </button>
 
       <p className="mt-8 mb-4">
         Nouveau Utilisateur?
-        <a href="" className="underline hover:text-cyan-700">
+        <a href="" className="underline hover:text-sky-900">
           Inscrivez-Vous!
         </a>
       </p>
