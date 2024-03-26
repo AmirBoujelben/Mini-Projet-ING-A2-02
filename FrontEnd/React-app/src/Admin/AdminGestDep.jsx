@@ -1,6 +1,7 @@
+import ListOfCards from "../SharedComponents/ListOfCards"
 
 export const AdminGestDep = () => {
   return (
-    <div>Filiere</div>
+    <ListOfCards />
   )
 }
